@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Groupe 3 — CI/CD AWS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="badge">🚀 CI/CD AWS — Groupe 3</div>
+    <h1>Infrastructure <span class="accent">DevOps</span> sur AWS</h1>
+    <p class="subtitle">CodePipeline · CodeBuild · S3 · CloudFront</p>
+    <div class="status">
+      <span class="dot"></span>
+      Pipeline actif — déployé automatiquement via AWS
+    </div>
+  </header>
+
+  <section class="pipeline">
+    <h2>Notre Pipeline CI/CD</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="icon">📝</div>
+        <div class="num">01</div>
+        <h3>Code</h3>
+        <p>Push sur GitHub déclenche le pipeline</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="icon">⚙️</div>
+        <div class="num">02</div>
+        <h3>Build</h3>
+        <p>CodeBuild compile et teste le code</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="icon">✅</div>
+        <div class="num">03</div>
+        <h3>Test</h3>
+        <p>Vérifications automatiques via buildspec.yml</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="icon">☁️</div>
+        <div class="num">04</div>
+        <h3>Deploy</h3>
+        <p>Fichiers envoyés sur S3 + cache CloudFront</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <h2>Services AWS Utilisés</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🔗</div>
+        <h3>CodePipeline</h3>
+        <p>Orchestre toutes les étapes du pipeline automatiquement.</p>
+        <span class="tag">Orchestration</span>
+      </div>
+      <div class="card">
+        <div class="icon">🔨</div>
+        <h3>CodeBuild</h3>
+        <p>Compile et teste dans un environnement isolé.</p>
+        <span class="tag">Build</span>
+      </div>
+      <div class="card">
+        <div class="icon">🗄️</div>
+        <h3>S3</h3>
+        <p>Héberge le site statique avec haute disponibilité.</p>
+        <span class="tag">Hébergement</span>
+      </div>
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>CloudFront</h3>
+        <p>CDN mondial avec HTTPS automatique.</p>
+        <span class="tag">CDN</span>
+      </div>
+      <div class="card">
+        <div class="icon">🔐</div>
+        <h3>IAM</h3>
+        <p>Permissions avec le principe du moindre privilège.</p>
+        <span class="tag">Sécurité</span>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>CloudWatch</h3>
+        <p>Logs et alertes en cas d'échec du pipeline.</p>
+        <span class="tag">Monitoring</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo">
+    <h2>Démo Interactive</h2>
+    <p>Ce compteur prouve que le JS fonctionne après déploiement.</p>
+    <div class="counter">
+      <span id="count">0</span>
+      <div class="btns">
+        <button onclick="change(-1)">−</button>
+        <button onclick="change(1)">+</button>
+        <button onclick="raz()">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Groupe 3 · Cours Cloud AWS · Prof. AGOUTOCO-POKO Caleb Benaja</p>
+    <p class="mono">Déployé via AWS CodePipeline + CodeBuild + S3 + CloudFront</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

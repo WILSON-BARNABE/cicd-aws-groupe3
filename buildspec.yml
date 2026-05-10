@@ -1,0 +1,34 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "=== Debut du pipeline CI/CD ==="
+
+  pre_build:
+    commands:
+      - echo "=== Verification des fichiers ==="
+      - test -f src/index.html && echo "OK index.html" || exit 1
+      - test -f src/style.css  && echo "OK style.css"  || exit 1
+      - test -f src/script.js  && echo "OK script.js"  || exit 1
+
+  build:
+    commands:
+      - echo "=== Build en cours ==="
+      - echo "Site statique HTML/CSS/JS - aucune compilation necessaire"
+      - echo "Build termine le $(date)"
+
+  post_build:
+    commands:
+      - echo "=== Deploiement vers S3 ==="
+      - aws s3 sync src/ s3://$S3_BUCKET --delete
+      - echo "=== Invalidation cache CloudFront ==="
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
+      - echo "=== Deploiement termine avec succes ==="
+
+artifacts:
+  files:
+    - src/index.html
+    - src/style.css
+    - src/script.js
+  discard-paths: yes
